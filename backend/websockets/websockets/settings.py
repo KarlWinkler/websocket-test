@@ -1,3 +1,5 @@
+# https://stackoverflow.com/questions/74091600/asgi-application-not-working-with-django-channels
+
 """
 Django settings for websockets project.
 
@@ -72,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'websockets.wsgi.application'
+# WSGI_APPLICATION = 'websockets.wsgi.application'
 
 
 # Database
