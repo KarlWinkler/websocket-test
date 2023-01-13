@@ -11,10 +11,13 @@ const Home = () => {
     let update = (data) => {
       console.log(data.message)
       let chat_box = document.querySelector('#websocket-message')
-      chat_box.innerHTML = data.message
+      let chat = document.createElement('p') 
+      let message = document.createTextNode(data.message);
+      chat.append(message)
+      chat_box.append(chat)
     } 
 
-    websocket.current = new WebSocket('ws://127.0.0.1:8000/chat/')
+    websocket.current = websocket.current || new WebSocket('ws://127.0.0.1:8000/chat/')
     console.log(websocket.current)
     websocket.current.onopen = e => {
       console.log('open', e)
@@ -34,8 +37,8 @@ const Home = () => {
   } 
 
   return (
-    <div className='Home-wrapper'>
-      <p id='websocket-message'></p>
+    <div className=''>
+      <div id='websocket-message'></div>
       <input id='message-box' type={'text'} />
       <div onClick={sendMessage}>Send</div>
     </div>
