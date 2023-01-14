@@ -1,6 +1,7 @@
 # https://stackoverflow.com/questions/74091600/asgi-application-not-working-with-django-channels
 # https://medium.com/@abhi.sharm.414/live-whiteboard-with-django-react-and-websockets-7cae864ed6c5
 # https://channels.readthedocs.io/en/latest/topics/channel_layers.html
+# https://github.com/asharma414/whiteboard
 
 """
 Django settings for websockets project.

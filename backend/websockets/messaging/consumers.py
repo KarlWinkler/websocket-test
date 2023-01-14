@@ -1,5 +1,6 @@
 import asyncio
 import json
+import random
 from channels.consumer import AsyncConsumer
 
 class ChatConsumer(AsyncConsumer):
@@ -18,13 +19,15 @@ class ChatConsumer(AsyncConsumer):
 
   async def websocket_receive(self, event):
     print('received', event)
-    text = event.get('text', None)
+    text = json.loads(event.get('text', None))
+
+    text.update({'user': random.randint(0, 1) })
 
     await self.channel_layer.group_send(
       self.group,
       {
         "type": "websocket.send",
-        "text": text
+        "text": json.dumps(text)
       }
     )
 

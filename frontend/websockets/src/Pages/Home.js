@@ -9,12 +9,26 @@ const Home = () => {
   useEffect(() => {
 
     let update = (data) => {
-      console.log(data.message)
+      console.log(data.user)
       let chat_box = document.querySelector('#websocket-message')
       let chat = document.createElement('p') 
       let message = document.createTextNode(data.message);
+
       chat.append(message)
+      chat.classList.add('Message')
       chat_box.append(chat)
+
+      document.querySelector('#message-box').value = ''
+      
+      if (data.user) {
+        chat.classList.add('UserMessage')
+      }
+      else {
+        chat.classList.add('OtherMessage')
+      }
+
+      // https://www.delftstack.com/howto/javascript/javascript-scroll-to-bottom-of-div/
+      chat_box.scrollTop = chat_box.scrollHeight
     } 
 
     websocket.current = websocket.current || new WebSocket('ws://127.0.0.1:8000/chat/')
@@ -37,10 +51,12 @@ const Home = () => {
   } 
 
   return (
-    <div className=''>
-      <div id='websocket-message'></div>
-      <input id='message-box' type={'text'} />
-      <div onClick={sendMessage}>Send</div>
+    <div className='Chatbox'>
+      <div id='websocket-message' className='MessageWrapper '></div>
+      <div className='MessageInputWrapper'>
+        <textarea id='message-box' className='MessageInput' rows={1}/>
+        <div className='Button' onClick={sendMessage}>Send</div>
+      </div>
     </div>
   )
 }

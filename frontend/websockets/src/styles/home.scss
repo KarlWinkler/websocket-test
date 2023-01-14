@@ -5,9 +5,85 @@
   padding: 1em;
 }
 
+
 .Home-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1em;
   padding: 1em 4em;
+}
+
+.Chatbox {
+  padding: 2em;
+  background-color: var(--colour-primary-50);
+  width: fit-content;
+  max-width: 600px;
+  min-width: 400px;
+}
+
+.MessageWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #3c2d43;
+  max-height: 400px;
+  overflow-y: scroll;
+  padding: 1em;
+  border: 4px solid white;
+}
+
+.Message {
+  background-color: var(--colour-primary);
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1em 0;
+  width: 60%;
+  word-wrap: break-word;
+
+  &.UserMessage {
+    background-color: var(--colour-secondary);
+    align-self: flex-end;
+  }
+
+  &.OtherMessage {
+    background-color: var(--colour-primary);
+    align-self: flex-start;
+  }
+}
+
+.MessageInputWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+}
+
+.MessageInput {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: .5em;
+  font-size: large;
+  box-shadow: inset 0 0 4px 1px black;
+  width: 100%;
+}
+
+.Button {
+  background-color: var(--colour-secondary);
+  border-radius: 16px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 600;
+  padding: 0.25em .5em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.Button:hover {
+  background-color: var(--colour-primary);
+  color: white;
+  transform: scale(1.1);
 }
